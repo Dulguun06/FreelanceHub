@@ -1,0 +1,65 @@
+<template>
+  <div class="container my-5">
+    <div v-if="job">
+      <button class="btn btn-secondary mb-3" @click="goBack">⬅ Back to Jobs</button>
+
+      <div class="card">
+        <img :src="job.company_logo" :alt="job.company" class="card-img-top" style="height: 200px; object-fit: contain;">
+        <div class="card-body">
+          <h3>{{ job.title }}</h3>
+          <p><strong>Company:</strong> {{ job.company }}</p>
+          <p><strong>Location:</strong> {{ job.location }}</p>
+
+          <!-- Salary information -->
+          <p v-if="job.salary_min && job.salary_max">
+            <strong>Salary:</strong> ${{ job.salary_min }} - ${{ job.salary_max }}
+          </p>
+
+          <!-- Render job description as HTML -->
+          <div class="job-description" v-html="job.description"></div>
+
+          <a :href="job.apply_url" target="_blank" class="btn btn-primary">Apply Now</a>
+        </div>
+      </div>
+    </div>
+    <div v-else class="alert alert-warning">
+      Job not found.
+    </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      job: null, // Selected job details
+    };
+  },
+  created() {
+    const savedJob = localStorage.getItem('currentJob');
+    this.job = savedJob ? JSON.parse(savedJob) : null;
+
+    if (!this.job) {
+      alert("Job data not found.");
+      this.$router.push('/openJobs');
+    }
+  },
+  methods: {
+    goBack() {
+      this.$router.back(); // Goes to the previous route
+      // Or: this.$router.push('/openJobs'); // Force navigate to open jobs
+    }
+  }
+};
+</script>
+
+<style scoped>
+.job-description{
+  padding-bottom: 50px;
+}
+.card-img-top {
+  height: 200px;
+  object-fit: contain;
+}
+</style>
