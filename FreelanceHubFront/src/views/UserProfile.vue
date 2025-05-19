@@ -36,18 +36,6 @@
           </div>
         </div>
         <button class="btn btn-secondary mt-3" @click="step = 1">⬅ Back</button>
-        <button class="btn btn-primary mt-3 ms-2" @click="step = 3">Next ➡</button>
-      </div>
-
-      <!-- Step 3: Job Fields -->
-      <div v-else-if="step === 3">
-        <h5>What job fields are you looking for?</h5>
-        <input
-            v-model="fields"
-            class="form-control"
-            placeholder="e.g., Backend, Frontend, DevOps"
-        />
-        <button class="btn btn-secondary mt-3" @click="step = 2">⬅ Back</button>
         <button class="btn btn-success mt-3 ms-2" @click="saveProfile">✅ Save</button>
       </div>
 
@@ -67,7 +55,6 @@ export default {
       selectedCategory: '',
       skillOptions: [],
       selectedSkills: [],
-      fields: '',
     };
   },
   computed: {
@@ -87,7 +74,6 @@ export default {
     const saved = JSON.parse(localStorage.getItem('profile'));
     if (saved) {
       this.selectedSkills = saved.skills || [];
-      this.fields = saved.fields || '';
     }
   },
   methods: {
@@ -102,21 +88,18 @@ export default {
           JSON.stringify({
             category: this.selectedCategory,
             skills: lowerCaseSkills,
-            fields: this.fields,
           })
       );
       alert('✅ Preferences saved!');
       this.step = 1;
       this.selectedCategory = '';
       this.selectedSkills = [];
-      this.fields = '';
       this.$router.push('/openJobs');
     },
     clearPreferences() {
       localStorage.removeItem('profile');
       this.selectedCategory = '';
       this.selectedSkills = [];
-      this.fields = '';
       alert('Preferences cleared!');
     }
 

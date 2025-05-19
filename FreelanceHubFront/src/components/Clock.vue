@@ -1,0 +1,105 @@
+<script setup lang="ts">
+// No script needed for now
+</script>
+
+<template>
+  <div class="container world-clock">
+    <h2 class="title text-center">World Clock</h2>
+
+    <div class="clock-item">
+      <p class="clock-label">Ulaanbaatar</p>
+      <iframe
+          src="http://free.timeanddate.com/clock/i9wfpqsp/n720/szw110/szh110/hoc202020/hbw2/cf100/hncfefefe/fac202020/fdi78/mqc000/mql10/mqw4/mqd98/mhc000/mhl10/mhw4/mhd98/mmc000/mml10/mmw1/mmd98"
+          frameborder="0"
+          width="150"
+          height="150"
+          title="Ulaanbaatar Clock"
+      ></iframe>
+    </div>
+
+    <div class="clock-item">
+      <p class="clock-label">Washington DC</p>
+      <iframe
+          src="http://free.timeanddate.com/clock/i9wfpqsp/n263/szw110/szh110/hoc202020/hbw2/cf100/hncfefefe/fac202020/fdi78/mqc000/mql10/mqw4/mqd98/mhc000/mhl10/mhw4/mhd98/mmc000/mml10/mmw1/mmd98"
+          frameborder="0"
+          width="150"
+          height="150"
+          title="Washington DC Clock"
+      ></iframe>
+    </div>
+
+    <div class="clock-item">
+      <p class="clock-label">Seoul</p>
+      <iframe
+          src="http://free.timeanddate.com/clock/i9wfpqsp/n235/szw110/szh110/hoc202020/hbw2/cf100/hncfefefe/fac202020/fdi78/mqc000/mql10/mqw4/mqd98/mhc000/mhl10/mhw4/mhd98/mmc000/mml10/mmw1/mmd98"
+          frameborder="0"
+          width="150"
+          height="150"
+          title="Seoul Clock"
+      ></iframe>
+    </div>
+
+    <div class="clock-item">
+      <p class="clock-label">Beijing</p>
+      <iframe
+          src="http://free.timeanddate.com/clock/i9wfpqsp/n33/szw110/szh110/hoc202020/hbw2/cf100/hncfefefe/fac202020/fdi78/mqc000/mql10/mqw4/mqd98/mhc000/mhl10/mhw4/mhd98/mmc000/mml10/mmw1/mmd98"
+          frameborder="0"
+          width="150"
+          height="150"
+          title="Beijing Clock"
+      ></iframe>
+    </div>
+  </div>
+</template>
+<style scoped>
+.container.world-clock {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1.4rem;
+}
+
+.title {
+  grid-column: 1 / -1;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  text-align: center;
+}
+
+.clock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: box-shadow 0.3s ease;
+}
+
+.clock-item:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.clock-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  color: #555;
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+}
+</style>

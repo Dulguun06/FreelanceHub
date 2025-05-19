@@ -26,7 +26,7 @@ public class WebConfig {
         http.csrf(AbstractHttpConfigurer::disable).cors(cors -> {
         }).authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**").permitAll() // Allow login/register
                 .anyRequest().permitAll()); // Allow all other requests (for now)
-
         return http.build();
     }
 }
+

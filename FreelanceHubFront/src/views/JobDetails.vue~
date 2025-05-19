@@ -4,7 +4,7 @@
       <button class="btn btn-secondary mb-3" @click="goBack">⬅ Back to Jobs</button>
 
       <div class="card">
-        <img :src="job.company_logo" :alt="job.company" class="card-img-top" style="height: 200px; object-fit: contain;">
+        <img v-if="job.company_logo" :src="job.company_logo" :alt="job.company" class="card-img-top" style="height: 200px; object-fit: contain;">
         <div class="card-body">
           <h3>{{ job.title }}</h3>
           <p><strong>Company:</strong> {{ job.company }}</p>
